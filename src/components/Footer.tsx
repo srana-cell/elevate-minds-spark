@@ -15,7 +15,7 @@ const Footer = () => {
   const { toast } = useToast();
 
   // ⬇️ PASTE YOUR GOOGLE APPS SCRIPT URL HERE
-  const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNYbj5FGAlRReHetzCol-_Hb23emo69JyG8hVnp79TboIpUhyVff0Cn30mYN23Q44cow/exec";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
