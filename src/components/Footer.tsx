@@ -14,7 +14,6 @@ const Footer = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  // ⬇️ PASTE YOUR GOOGLE APPS SCRIPT URL HERE
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNYbj5FGAlRReHetzCol-_Hb23emo69JyG8hVnp79TboIpUhyVff0Cn30mYN23Q44cow/exec";
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -93,7 +92,6 @@ const Footer = () => {
             </form>
           </div>
 
-          
           {/* Organization Info */}
           <div>
             <h3 className="font-heading font-bold text-2xl mb-6">ElevateMinds STEM Foundation</h3>
@@ -120,14 +118,13 @@ const Footer = () => {
             {/* Social Media */}
             <div>
               <h4 className="font-subheading font-medium text-lg mb-4">Follow Us</h4>
-                <a 
-                  href="https://instagram.com" 
-                  className="p-2 bg-white/10 rounded-lg hover:bg-accent transition-colors"
-                  aria-label="Instagram"
-                >
-                  <Instagram size={20} />
-                </a>
-              </div>
+              <a 
+                href="https://instagram.com" 
+                className="p-2 bg-white/10 rounded-lg hover:bg-accent transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram size={20} />
+              </a>
             </div>
           </div>
         </div>
