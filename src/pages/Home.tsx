@@ -109,21 +109,14 @@ const Home = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Our Organization</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Founded in 2020 by a group of passionate educators and industry professionals, 
-              ElevateMinds STEM Foundation was born from the belief that every student deserves 
-              access to quality STEM education regardless of their background or circumstances.
+              Info about organization
             </p>
             <p className="text-lg text-muted-foreground mb-12">
-              Our inspiration comes from seeing the spark of curiosity in students' eyes when they 
-              discover the wonders of science, the logic of mathematics, the creativity of engineering, 
-              and the possibilities of technology.
+              N/A
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center">
-                <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-primary-foreground">50+</span>
-                </div>
                 <h3 className="font-subheading font-medium text-xl mb-2">One-Day Workshops</h3>
                 <p className="text-muted-foreground">
                   Intensive hands-on learning experiences covering various STEM topics
@@ -131,9 +124,6 @@ const Home = () => {
               </div>
 
               <div className="text-center">
-                <div className="w-20 h-20 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-accent-foreground">25+</span>
-                </div>
                 <h3 className="font-subheading font-medium text-xl mb-2">Virtual Sessions</h3>
                 <p className="text-muted-foreground">
                   Online interactive sessions accessible from anywhere in the world
@@ -141,9 +131,6 @@ const Home = () => {
               </div>
 
               <div className="text-center">
-                <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-2xl font-bold text-primary-foreground">12</span>
-                </div>
                 <h3 className="font-subheading font-medium text-xl mb-2">Summer Camps</h3>
                 <p className="text-muted-foreground">
                   Week-long immersive programs for deep STEM exploration
