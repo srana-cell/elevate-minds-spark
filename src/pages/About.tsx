@@ -120,9 +120,6 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="font-heading font-bold text-3xl md:text-4xl mb-6">Our Team</h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Meet the passionate educators, researchers, and innovators who make our mission possible.
-            </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
