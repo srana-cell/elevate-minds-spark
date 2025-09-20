@@ -130,6 +130,7 @@ const handlePartnerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               <form onSubmit={handleVolunteerSubmit} className="space-y-6">
                 <Input
                   type="text"
+                  name="name"
                   placeholder="Your Name"
                   value={volunteerForm.name}
                   onChange={(e) => setVolunteerForm({ ...volunteerForm, name: e.target.value })}
@@ -137,12 +138,14 @@ const handlePartnerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 />
                 <Input
                   type="email"
+                  name="email"
                   placeholder="Your Email"
                   value={volunteerForm.email}
                   onChange={(e) => setVolunteerForm({ ...volunteerForm, email: e.target.value })}
                   required
                 />
                 <Textarea
+                  name="reason"
                   placeholder="Why would you like to volunteer with us? What skills or experience do you bring?"
                   value={volunteerForm.reason}
                   onChange={(e) => setVolunteerForm({ ...volunteerForm, reason: e.target.value })}
