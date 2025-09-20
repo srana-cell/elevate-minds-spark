@@ -13,15 +13,12 @@ const Contact = () => {
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNYbj5FGAlRReHetzCol-_Hb23emo69JyG8hVnp79TboIpUhyVff0Cn30mYN23Q44cow/exec";
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-
-  // Create FormData from the form element
-  const form = e.currentTarget;
-  const data = new FormData(form);
-  // Manually add the formType
-  data.append("formType", "Contacts");
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    data.append("formType", "Contacts");
 
 // Send the request but don't wait for a response
     try {
@@ -37,10 +34,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
