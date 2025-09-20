@@ -106,7 +106,8 @@ const Contact = () => {
                     <p className="text-muted-foreground">NA</p>
                     <p className="text-muted-foreground text-sm">Monday - Friday, 9 AM - 5 PM EST</p>
                   </div>
-            
+                </div>
+
               </CardContent>
             </Card>
 
