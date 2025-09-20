@@ -41,42 +41,6 @@ const Events = () => {
       ageGroup: "Ages 13-17",
       status: "Nearly Full"
     },
-    {
-      id: 4,
-      title: "Engineering Challenge: Bridge Building Contest",
-      date: "April 12, 2024",
-      time: "1:00 PM - 6:00 PM",
-      location: "Community Center",
-      category: "One-Day Workshop",
-      description: "Design and build bridges using everyday materials, then test their strength and efficiency.",
-      capacity: "32 students",
-      ageGroup: "Ages 11-15",
-      status: "Open"
-    },
-    {
-      id: 5,
-      title: "Space Exploration Virtual Tour",
-      date: "April 19, 2024",
-      time: "3:00 PM - 4:30 PM",
-      location: "Online (YouTube Live)",
-      category: "Virtual Session",
-      description: "Join NASA scientists for a virtual tour of space missions and learn about career opportunities in aerospace.",
-      capacity: "Unlimited",
-      ageGroup: "All ages",
-      status: "Open"
-    },
-    {
-      id: 6,
-      title: "Summer STEM Innovation Camp",
-      date: "July 8-12, 2024",
-      time: "9:00 AM - 4:00 PM daily",
-      location: "ElevateMinds Campus",
-      category: "Camp",
-      description: "Week-long intensive camp covering all STEM disciplines with project-based learning and field trips.",
-      capacity: "40 students",
-      ageGroup: "Ages 12-16",
-      status: "Early Bird"
-    }
   ];
 
   const getCategoryColor = (category: string) => {
@@ -121,7 +85,6 @@ const Events = () => {
 
         {/* Event Categories Filter */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          <Badge variant="outline" className="px-4 py-2 text-sm">All Events</Badge>
           <Badge variant="outline" className="px-4 py-2 text-sm">One-Day Workshops</Badge>
           <Badge variant="outline" className="px-4 py-2 text-sm">Virtual Sessions</Badge>
           <Badge variant="outline" className="px-4 py-2 text-sm">Camps</Badge>
