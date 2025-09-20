@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
+import { useToast } from "@/hooks/use-toast";
 
 const Footer = () => {
   const [formData, setFormData] = useState({
@@ -10,20 +11,38 @@ const Footer = () => {
     email: '',
     message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // ⬇️ PASTE YOUR GOOGLE APPS SCRIPT URL HERE
+  const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Contact form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
+    setIsSubmitting(true);
+
+    const dataToSubmit = { ...formData, formType: "Contacts" };
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dataToSubmit),
+      });
+
+      toast({ title: "Success!", description: "Your message has been sent." });
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({ title: "Error", description: "Could not send message. Please try again.", variant: "destructive" });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -41,6 +60,7 @@ const Footer = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
+                disabled={isSubmitting}
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/70"
               />
               <Input
@@ -50,6 +70,7 @@ const Footer = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                disabled={isSubmitting}
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/70"
               />
               <Textarea
@@ -59,17 +80,20 @@ const Footer = () => {
                 onChange={handleChange}
                 required
                 rows={4}
+                disabled={isSubmitting}
                 className="bg-white/10 border-white/20 text-white placeholder:text-white/70"
               />
               <Button 
                 type="submit" 
                 className="bg-accent hover:bg-accent/90 text-white w-full"
+                disabled={isSubmitting}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </Button>
             </form>
           </div>
 
+          
           {/* Organization Info */}
           <div>
             <h3 className="font-heading font-bold text-2xl mb-6">ElevateMinds STEM Foundation</h3>
