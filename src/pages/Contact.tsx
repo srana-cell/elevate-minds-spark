@@ -92,7 +92,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-subheading font-semibold text-lg mb-1">Email</h3>
-                    <p className="text-muted-foreground">info@elevateminds.org</p>
+                    <p className="text-muted-foreground">NA</p>
                     <p className="text-muted-foreground text-sm">We typically respond within 24 hours</p>
                   </div>
                 </div>
@@ -103,34 +103,10 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-subheading font-semibold text-lg mb-1">Phone</h3>
-                    <p className="text-muted-foreground">(555) 123-STEM</p>
+                    <p className="text-muted-foreground">NA</p>
                     <p className="text-muted-foreground text-sm">Monday - Friday, 9 AM - 5 PM EST</p>
                   </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="text-primary" size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-subheading font-semibold text-lg mb-1">Address</h3>
-                    <p className="text-muted-foreground">123 Innovation Drive</p>
-                    <p className="text-muted-foreground">Tech City, TC 12345</p>
-                    <p className="text-muted-foreground text-sm">Visitors welcome by appointment</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="text-accent" size={20} />
-                  </div>
-                  <div>
-                    <h3 className="font-subheading font-semibold text-lg mb-1">Office Hours</h3>
-                    <p className="text-muted-foreground">Monday - Friday: 9:00 AM - 5:00 PM</p>
-                    <p className="text-muted-foreground">Saturday: 10:00 AM - 2:00 PM</p>
-                    <p className="text-muted-foreground">Sunday: Closed</p>
-                  </div>
-                </div>
+            
               </CardContent>
             </Card>
 
@@ -145,20 +121,6 @@ const Contact = () => {
                   and inspiring STEM content.
                 </p>
                 <div className="flex space-x-4">
-                  <a
-                    href="https://facebook.com/elevateminds"
-                    className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
-                    aria-label="Facebook"
-                  >
-                    <Facebook size={20} />
-                  </a>
-                  <a
-                    href="https://twitter.com/elevateminds"
-                    className="flex items-center justify-center w-12 h-12 bg-accent/10 rounded-lg hover:bg-accent hover:text-accent-foreground transition-colors duration-200"
-                    aria-label="Twitter"
-                  >
-                    <Twitter size={20} />
-                  </a>
                   <a
                     href="https://instagram.com/elevateminds"
                     className="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors duration-200"
