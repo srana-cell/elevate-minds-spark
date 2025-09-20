@@ -13,26 +13,28 @@ const Contact = () => {
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNYbj5FGAlRReHetzCol-_Hb23emo69JyG8hVnp79TboIpUhyVff0Cn30mYN23Q44cow/exec";
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-  
-    const form = e.currentTarget;
-    const data = new FormData(form);
-    data.append("formType", "Contacts");
-  
+  // Create FormData from the form element
+  const form = e.currentTarget;
+  const data = new FormData(form);
+  // Manually add the formType
+  data.append("formType", "Contacts");
+
+// Send the request but don't wait for a response
     try {
       await fetch(SCRIPT_URL, { method: 'POST', body: data });
       toast({ title: "Thank you!", description: "Your volunteer interest form has been submitted." });
-      setFormData({ name: '', email: '', reason: '' });
+      setVolunteerForm({ name: '', email: '', reason: '' });
     } catch (error) {
       console.error('Thank you!', error);
       toast({ title: "Thank you!", description: "Your volunteer interest form has been submitted." });
     } finally {
-      setIsSubmitting(false);
+      setIsSubmittingVolunteer(false);
     }
-  };
+};
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
