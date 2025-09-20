@@ -4,57 +4,55 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { HandHeart, Users, Lightbulb, GraduationCap, Heart, Building } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
 
 const GetInvolved = () => {
-  const [volunteerForm, setVolunteerForm] = useState({
-    name: '',
-    email: '',
-    reason: ''
-  });
+  const [volunteerForm, setVolunteerForm] = useState({ name: '', email: '', reason: '' });
+  const [partnerForm, setPartnerForm] = useState({ name: '', email: '', message: '' });
+  const [isSubmittingVolunteer, setIsSubmittingVolunteer] = useState(false);
+  const [isSubmittingPartner, setIsSubmittingPartner] = useState(false);
+  const { toast } = useToast();
 
-  const [partnerForm, setPartnerForm] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  // ⬇️ PASTE YOUR GOOGLE APPS SCRIPT URL HERE
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzFJHI2jhm0OW7Y6h_GEk9Mm55bKl_nYRV5XNhYJ_80RN0dwjfQosnxV_cGxCtsn3wUfw/exec";
 
-const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setIsSubmittingVolunteer(true);
-  const form = e.currentTarget;
-  const data = new FormData(form);
-  data.append("formType", "Volunteers");
+  const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmittingVolunteer(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    data.append("formType", "Volunteers");
 
-  try {
-    await fetch(SCRIPT_URL, { method: 'POST', body: data });
-    toast({ title: "Thank you!", description: "Your volunteer interest form has been submitted." });
-    setVolunteerForm({ name: '', email: '', reason: '' });
-  } catch (error) {
-    console.error('Error submitting volunteer form:', error);
-    toast({ title: "Error", description: "Something went wrong. Please try again later.", variant: "destructive" });
-  } finally {
-    setIsSubmittingVolunteer(false);
-  }
-};
+    try {
+      await fetch(SCRIPT_URL, { method: 'POST', body: data });
+      toast({ title: "Thank you!", description: "Your volunteer interest form has been submitted." });
+      setVolunteerForm({ name: '', email: '', reason: '' });
+    } catch (error) {
+      console.error('Error submitting volunteer form:', error);
+      toast({ title: "Error", description: "Something went wrong. Please try again later.", variant: "destructive" });
+    } finally {
+      setIsSubmittingVolunteer(false);
+    }
+  };
 
-const handlePartnerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setIsSubmittingPartner(true);
-  const form = e.currentTarget;
-  const data = new FormData(form);
-  data.append("formType", "Partners");
+  const handlePartnerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmittingPartner(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    data.append("formType", "Partners");
 
-  try {
-    await fetch(SCRIPT_URL, { method: 'POST', body: data });
-    toast({ title: "Thank you!", description: "Your partnership inquiry has been sent." });
-    setPartnerForm({ name: '', email: '', message: '' });
-  } catch (error) {
-    console.error('Error submitting partner form:', error);
-    toast({ title: "Error", description: "Something went wrong. Please try again later.", variant: "destructive" });
-  } finally {
-    setIsSubmittingPartner(false);
-  }
-};
+    try {
+      await fetch(SCRIPT_URL, { method: 'POST', body: data });
+      toast({ title: "Thank you!", description: "Your partnership inquiry has been sent." });
+      setPartnerForm({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('Error submitting partner form:', error);
+      toast({ title: "Error", description: "Something went wrong. Please try again later.", variant: "destructive" });
+    } finally {
+      setIsSubmittingPartner(false);
+    }
+  };
 
   const volunteerOpportunities = [
     {
@@ -135,6 +133,7 @@ const handlePartnerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   value={volunteerForm.name}
                   onChange={(e) => setVolunteerForm({ ...volunteerForm, name: e.target.value })}
                   required
+                  disabled={isSubmittingVolunteer}
                 />
                 <Input
                   type="email"
@@ -143,6 +142,7 @@ const handlePartnerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   value={volunteerForm.email}
                   onChange={(e) => setVolunteerForm({ ...volunteerForm, email: e.target.value })}
                   required
+                  disabled={isSubmittingVolunteer}
                 />
                 <Textarea
                   name="reason"
@@ -151,9 +151,10 @@ const handlePartnerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   onChange={(e) => setVolunteerForm({ ...volunteerForm, reason: e.target.value })}
                   required
                   rows={4}
+                  disabled={isSubmittingVolunteer}
                 />
-                <Button type="submit" className="w-full btn-primary">
-                  Sign Up to Volunteer
+                <Button type="submit" className="w-full btn-primary" disabled={isSubmittingVolunteer}>
+                  {isSubmittingVolunteer ? 'Submitting...' : 'Sign Up to Volunteer'}
                 </Button>
               </form>
             </CardContent>
@@ -183,7 +184,6 @@ const handlePartnerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 Bring our programs directly to your students through in-school workshops and assemblies.
               </p>
             </div>
-
             <div className="text-center">
               <div className="w-12 h-12 bg-accent rounded-lg flex items-center justify-center mx-auto mb-4">
                 <Building className="text-accent-foreground" size={24} />
@@ -193,7 +193,6 @@ const handlePartnerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                 Sponsor programs, provide mentors, and help us reach more students in your community.
               </p>
             </div>
-
             <div className="text-center">
               <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-4">
                 <Users className="text-primary-foreground" size={24} />
@@ -214,27 +213,33 @@ const handlePartnerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               <form onSubmit={handlePartnerSubmit} className="space-y-6">
                 <Input
                   type="text"
+                  name="name"
                   placeholder="Your Name"
                   value={partnerForm.name}
                   onChange={(e) => setPartnerForm({ ...partnerForm, name: e.target.value })}
                   required
+                  disabled={isSubmittingPartner}
                 />
                 <Input
                   type="email"
+                  name="email"
                   placeholder="Your Email"
                   value={partnerForm.email}
                   onChange={(e) => setPartnerForm({ ...partnerForm, email: e.target.value })}
                   required
+                  disabled={isSubmittingPartner}
                 />
                 <Textarea
+                  name="message"
                   placeholder="Tell us about your organization and how you'd like to partner with us..."
                   value={partnerForm.message}
                   onChange={(e) => setPartnerForm({ ...partnerForm, message: e.target.value })}
                   required
                   rows={4}
+                  disabled={isSubmittingPartner}
                 />
-                <Button type="submit" className="w-full btn-primary">
-                  Send Partnership Inquiry
+                <Button type="submit" className="w-full btn-primary" disabled={isSubmittingPartner}>
+                  {isSubmittingPartner ? 'Sending...' : 'Send Partnership Inquiry'}
                 </Button>
               </form>
             </CardContent>
