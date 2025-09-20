@@ -8,7 +8,7 @@ const Events = () => {
     {
       id: 1,
       title: "Robotics Workshop: Build Your First Robot",
-      date: "March 15, 2024",
+      date: "TBD",
       time: "9:00 AM - 4:00 PM",
       location: "Tech Innovation Center",
       category: "One-Day Workshop",
@@ -20,7 +20,7 @@ const Events = () => {
     {
       id: 2,
       title: "Virtual Coding Bootcamp: Python for Beginners",
-      date: "March 22, 2024",
+      date: "TBD",
       time: "2:00 PM - 5:00 PM",
       location: "Online (Zoom)",
       category: "Virtual Session",
@@ -32,7 +32,7 @@ const Events = () => {
     {
       id: 3,
       title: "Chemistry Lab: Spectacular Science Reactions",
-      date: "April 5, 2024",
+      date: "TBD",
       time: "10:00 AM - 3:00 PM",
       location: "University Science Building",
       category: "One-Day Workshop",
