@@ -17,32 +17,29 @@ const Contact = () => {
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzFJHI2jhm0OW7Y6h_GEk9Mm55bKl_nYRV5XNhYJ_80RN0dwjfQosnxV_cGxCtsn3wUfw/exec";
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    // Add the formType so our script knows which sheet to use
-    const dataToSubmit = { ...formData, formType: "Contacts" };
+  const form = e.currentTarget;
+  const data = new FormData(form);
+  data.append("formType", "Contacts");
 
-    try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors', // This is important for simple Google Apps Script deployments
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(dataToSubmit),
-      });
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: data,
+    });
 
-      toast({ title: "Success!", description: "Your message has been sent successfully." });
-      setFormData({ name: '', email: '', message: '' }); // Clear the form
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast({ title: "Error", description: "Something went wrong. Please try again later.", variant: "destructive" });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+    toast({ title: "Success!", description: "Your message has been sent successfully." });
+    setFormData({ name: '', email: '', message: '' });
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    toast({ title: "Error", description: "Something went wrong. Please try again later.", variant: "destructive" });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
