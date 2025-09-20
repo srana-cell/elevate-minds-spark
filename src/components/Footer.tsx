@@ -16,15 +16,12 @@ const Footer = () => {
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzFJHI2jhm0OW7Y6h_GEk9Mm55bKl_nYRV5XNhYJ_80RN0dwjfQosnxV_cGxCtsn3wUfw/exec";
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-
-  // Create FormData from the form element
-  const form = e.currentTarget;
-  const data = new FormData(form);
-  // Manually add the formType
-  data.append("formType", "Contacts");
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    data.append("formType", "Contacts");
 
 // Send the request but don't wait for a response
     try {
