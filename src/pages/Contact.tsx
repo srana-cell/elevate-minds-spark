@@ -15,7 +15,8 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmittingVolunteer(true);
+    setIsSubmitting(true);
+
   
     const form = e.currentTarget;
     const data = new FormData(form);
@@ -24,12 +25,12 @@ const Contact = () => {
     try {
       await fetch(SCRIPT_URL, { method: 'POST', body: data });
       toast({ title: "Thank you!", description: "Your volunteer interest form has been submitted." });
-      setVolunteerForm({ name: '', email: '', reason: '' });
+      setFormData({ name: '', email: '', reason: '' });
     } catch (error) {
       console.error('Thank you!', error);
       toast({ title: "Thank you!", description: "Your volunteer interest form has been submitted." });
     } finally {
-      setIsSubmittingVolunteer(false);
+      setIsSubmitting(false);
     }
   };
 
