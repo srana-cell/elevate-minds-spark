@@ -118,13 +118,16 @@ const Footer = () => {
             {/* Social Media */}
             <div>
               <h4 className="font-subheading font-medium text-lg mb-4">Follow Us</h4>
-              <a 
-                href="https://instagram.com" 
-                className="p-2 bg-white/10 rounded-lg hover:bg-accent transition-colors"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
+              <div className="flex space-x-4">
+        
+                <a 
+                  href="https://instagram.com" 
+                  className="p-2 bg-white/10 rounded-lg hover:bg-accent transition-colors"
+                  aria-label="Instagram"
+                >
+                  <Instagram size={20} />
+                </a>
+              </div>
             </div>
           </div>
         </div>
