@@ -21,17 +21,16 @@ const Contact = () => {
     const data = new FormData(form);
     data.append("formType", "Contacts");
   
-    fetch(SCRIPT_URL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: data,
-    });
-  
-    setTimeout(() => {
-      setIsSubmitting(false);
-      toast({ title: "Success!", description: "Your message has been sent successfully." });
-      setFormData({ name: '', email: '', message: '' });
-    }, 1000);
+    try {
+      await fetch(SCRIPT_URL, { method: 'POST', body: data });
+      toast({ title: "Thank you!", description: "Your volunteer interest form has been submitted." });
+      setVolunteerForm({ name: '', email: '', reason: '' });
+    } catch (error) {
+      console.error('Thank you!', error);
+      toast({ title: "Thank you!", description: "Your volunteer interest form has been submitted." });
+    } finally {
+      setIsSubmittingVolunteer(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
