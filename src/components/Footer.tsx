@@ -16,30 +16,32 @@ const Footer = () => {
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzFJHI2jhm0OW7Y6h_GEk9Mm55bKl_nYRV5XNhYJ_80RN0dwjfQosnxV_cGxCtsn3wUfw/exec";
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsSubmitting(true);
 
-    const dataToSubmit = { ...formData, formType: "Contacts" };
+  // Create FormData from the form element
+  const form = e.currentTarget;
+  const data = new FormData(form);
+  // Manually add the formType
+  data.append("formType", "Contacts");
 
-    try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(dataToSubmit),
-      });
-
-      toast({ title: "Success!", description: "Your message has been sent." });
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast({ title: "Error", description: "Could not send message. Please try again.", variant: "destructive" });
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
+  try {
+    await fetch(SCRIPT_URL, {
+      method: 'POST',
+      body: data,
+    });
+    
+    toast({ title: "Success!", description: "Your message has been sent." });
+    setFormData({ name: '', email: '', message: '' });
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    toast({ title: "Error", description: "Could not send message. Please try again.", variant: "destructive" });
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
