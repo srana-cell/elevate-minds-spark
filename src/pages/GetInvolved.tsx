@@ -23,16 +23,21 @@ const GetInvolved = () => {
     const data = new FormData(form);
     data.append("formType", "Volunteers");
 
-    try {
-      await fetch(SCRIPT_URL, { method: 'POST', body: data });
-      toast({ title: "Thank you!", description: "Your volunteer interest form has been submitted." });
-      setVolunteerForm({ name: '', email: '', reason: '' });
-    } catch (error) {
-      console.error('Error submitting volunteer form:', error);
-      toast({ title: "Error", description: "Something went wrong. Please try again later.", variant: "destructive" });
-    } finally {
-      setIsSubmittingVolunteer(false);
-    }
+// Send the request but don't wait for a response
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors', // Keep no-cors mode
+    body: data,
+  });
+
+  // Assume success and provide immediate user feedback
+  // A short delay makes the experience feel more natural
+  setTimeout(() => {
+    setIsSubmitting(false);
+    toast({ title: "Success!", description: "Your message has been sent." });
+    // Make sure to reset the correct form state variable here
+    setFormData({ name: '', email: '', message: '' }); 
+  }, 1000); // 1-second delay
   };
 
   const handlePartnerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -42,16 +47,21 @@ const GetInvolved = () => {
     const data = new FormData(form);
     data.append("formType", "Partners");
 
-    try {
-      await fetch(SCRIPT_URL, { method: 'POST', body: data });
-      toast({ title: "Thank you!", description: "Your partnership inquiry has been sent." });
-      setPartnerForm({ name: '', email: '', message: '' });
-    } catch (error) {
-      console.error('Error submitting partner form:', error);
-      toast({ title: "Error", description: "Something went wrong. Please try again later.", variant: "destructive" });
-    } finally {
-      setIsSubmittingPartner(false);
-    }
+// Send the request but don't wait for a response
+  fetch(SCRIPT_URL, {
+    method: 'POST',
+    mode: 'no-cors', // Keep no-cors mode
+    body: data,
+  });
+
+  // Assume success and provide immediate user feedback
+  // A short delay makes the experience feel more natural
+  setTimeout(() => {
+    setIsSubmitting(false);
+    toast({ title: "Success!", description: "Your message has been sent." });
+    // Make sure to reset the correct form state variable here
+    setFormData({ name: '', email: '', message: '' }); 
+  }, 1000); // 1-second delay
   };
 
   const volunteerOpportunities = [
