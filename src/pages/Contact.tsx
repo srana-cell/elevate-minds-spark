@@ -4,41 +4,35 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Instagram } from 'lucide-react';
-import { useToast } from "@/hooks/use-toast"; // Import the toast hook
+import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzFJHI2jhm0OW7Y6h_GEk9Mm55bKl_nYRV5XNhYJ_80RN0dwjfQosnxV_cGxCtsn3wUfw/exec";
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNYbj5FGAlRReHetzCol-_Hb23emo69JyG8hVnp79TboIpUhyVff0Cn30mYN23Q44cow/exec";
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setIsSubmitting(true);
-
-  const form = e.currentTarget;
-  const data = new FormData(form);
-  data.append("formType", "Contacts");
-
-  fetch(SCRIPT_URL, {
-    method: 'POST',
-    mode: 'no-cors', // Keep no-cors mode
-    body: data,
-  });
-
-  // Assume success and provide immediate user feedback
-  // A short delay makes the experience feel more natural
-  setTimeout(() => {
-    setIsSubmitting(false);
-    toast({ title: "Success!", description: "Your message has been sent." });
-    // Make sure to reset the correct form state variable here
-    setFormData({ name: '', email: '', message: '' }); 
-  }, 1000); // 1-second delay
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+  
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    data.append("formType", "Contacts");
+  
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: data,
+    });
+  
+    setTimeout(() => {
+      setIsSubmitting(false);
+      toast({ title: "Success!", description: "Your message has been sent successfully." });
+      setFormData({ name: '', email: '', message: '' });
+    }, 1000);
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -99,7 +93,6 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                         </CardContent>
                     </Card>
                 </div>
-                {/* The rest of your contact information JSX remains here... */}
                 <div className="space-y-8">
                     <Card>
                         <CardHeader>
@@ -155,6 +148,6 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         </div>
     </div>
   );
-};
+}; // <-- This was the missing closing brace and semicolon
 
 export default Contact;
