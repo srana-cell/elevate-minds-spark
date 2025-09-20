@@ -6,32 +6,26 @@ const About = () => {
     {
       name: "N/A",
       role: "Executive Director",
-      #bio: "Former NASA engineer with 15 years of experience in STEM education and curriculum development.",
-      #image: "https://images.unsplash.com/photo-1494790108755-2616b612b494?w=300&h=300&fit=crop&crop=face"
     },
     {
       name: "N/A",
       role: "Program Director",
-      #bio: "Computer science educator and software developer passionate about making technology accessible to all students.",
-      #image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face"
+
     },
     {
       name: "N/A",
       role: "Curriculum Specialist",
-      #bio: "Mathematics professor and researcher focused on innovative teaching methods and inclusive education.",
-      #image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&crop=face"
+
     },
     {
       name: "N/A",
       role: "Community Outreach Coordinator",
-      #bio: "Former teacher with expertise in building partnerships between schools and community organizations.",
-      #image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=face"
+
     },
     {
       name: "N/A",
       role: "Technology Coordinator",
-      #bio: "Full-stack developer and tech entrepreneur focused on educational technology and digital learning platforms.",
-      #image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=300&fit=crop&crop=face"
+
     }
   ];
 
