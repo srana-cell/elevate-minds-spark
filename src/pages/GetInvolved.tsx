@@ -18,17 +18,43 @@ const GetInvolved = () => {
     message: ''
   });
 
-  const handleVolunteerSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Volunteer form submitted:', volunteerForm);
-    setVolunteerForm({ name: '', email: '', reason: '' });
-  };
+const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsSubmittingVolunteer(true);
+  const form = e.currentTarget;
+  const data = new FormData(form);
+  data.append("formType", "Volunteers");
 
-  const handlePartnerSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Partner form submitted:', partnerForm);
+  try {
+    await fetch(SCRIPT_URL, { method: 'POST', body: data });
+    toast({ title: "Thank you!", description: "Your volunteer interest form has been submitted." });
+    setVolunteerForm({ name: '', email: '', reason: '' });
+  } catch (error) {
+    console.error('Error submitting volunteer form:', error);
+    toast({ title: "Error", description: "Something went wrong. Please try again later.", variant: "destructive" });
+  } finally {
+    setIsSubmittingVolunteer(false);
+  }
+};
+
+const handlePartnerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setIsSubmittingPartner(true);
+  const form = e.currentTarget;
+  const data = new FormData(form);
+  data.append("formType", "Partners");
+
+  try {
+    await fetch(SCRIPT_URL, { method: 'POST', body: data });
+    toast({ title: "Thank you!", description: "Your partnership inquiry has been sent." });
     setPartnerForm({ name: '', email: '', message: '' });
-  };
+  } catch (error) {
+    console.error('Error submitting partner form:', error);
+    toast({ title: "Error", description: "Something went wrong. Please try again later.", variant: "destructive" });
+  } finally {
+    setIsSubmittingPartner(false);
+  }
+};
 
   const volunteerOpportunities = [
     {
