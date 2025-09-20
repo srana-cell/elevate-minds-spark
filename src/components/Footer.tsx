@@ -81,11 +81,11 @@ const Footer = () => {
             <div className="space-y-3 mb-6">
               <div className="flex items-center space-x-3">
                 <Mail size={18} className="text-accent" />
-                <span>info@elevateminds.org</span>
+                <span>NA</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone size={18} className="text-accent" />
-                <span>(555) 123-STEM</span>
+                <span>NAM</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin size={18} className="text-accent" />
@@ -96,21 +96,6 @@ const Footer = () => {
             {/* Social Media */}
             <div>
               <h4 className="font-subheading font-medium text-lg mb-4">Follow Us</h4>
-              <div className="flex space-x-4">
-                <a 
-                  href="https://facebook.com" 
-                  className="p-2 bg-white/10 rounded-lg hover:bg-accent transition-colors"
-                  aria-label="Facebook"
-                >
-                  <Facebook size={20} />
-                </a>
-                <a 
-                  href="https://twitter.com" 
-                  className="p-2 bg-white/10 rounded-lg hover:bg-accent transition-colors"
-                  aria-label="Twitter"
-                >
-                  <Twitter size={20} />
-                </a>
                 <a 
                   href="https://instagram.com" 
                   className="p-2 bg-white/10 rounded-lg hover:bg-accent transition-colors"
@@ -124,7 +109,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/20 text-center text-white/60">
-          <p>&copy; 2024 ElevateMinds STEM Foundation. All rights reserved.</p>
+          <p>&copy; 2025 ElevateMinds STEM Foundation. All rights reserved.</p>
         </div>
       </div>
     </footer>
