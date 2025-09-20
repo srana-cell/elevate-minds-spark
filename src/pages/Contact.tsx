@@ -13,9 +13,9 @@ const Contact = () => {
 
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzNYbj5FGAlRReHetzCol-_Hb23emo69JyG8hVnp79TboIpUhyVff0Cn30mYN23Q44cow/exec";
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    setIsSubmittingVolunteer(true);
   
     const form = e.currentTarget;
     const data = new FormData(form);
