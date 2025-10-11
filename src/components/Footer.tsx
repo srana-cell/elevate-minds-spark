@@ -90,7 +90,7 @@ const Footer = () => {
 
           {/* Organization Info */}
           <div>
-            <h3 className="font-heading font-bold text-2xl mb-6">ElevateMinds STEM Foundation</h3>
+            <h3 className="font-heading font-bold text-2xl mb-6">TheCodingInnovation</h3>
             <p className="text-white/80 mb-6">
               Inspiring innovation through quality STEM education. We believe every student 
               deserves access to engaging science, technology, engineering, and mathematics learning experiences.
@@ -129,7 +129,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/20 text-center text-white/60">
-          <p>&copy; 2025 ElevateMinds STEM Foundation. All rights reserved.</p>
+          <p>&copy; 2025 TheCodingInnovation. All rights reserved.</p>
         </div>
       </div>
     </footer>
