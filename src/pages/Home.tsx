@@ -19,7 +19,7 @@ const Home = () => {
             Inspiring Innovation Through STEM Education
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
-            ElevateMinds STEM Foundation empowers students through hands-on learning experiences 
+            TheCodingInnovation empowers students through hands-on learning experiences 
             in Science, Technology, Engineering, and Mathematics. Join us in building the next generation of innovators.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
