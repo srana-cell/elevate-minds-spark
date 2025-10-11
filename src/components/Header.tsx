@@ -26,7 +26,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">EM</span>
+              <span className="text-primary-foreground font-bold text-lg">TCI</span>
             </div>
             <span className="font-heading font-bold text-xl text-foreground">
               TheCodingInnovation
