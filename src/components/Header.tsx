@@ -29,7 +29,7 @@ const Header = () => {
               <span className="text-primary-foreground font-bold text-lg">EM</span>
             </div>
             <span className="font-heading font-bold text-xl text-foreground">
-              ElevateMinds
+              TheCodingInnovation
             </span>
           </Link>
 
