@@ -13,7 +13,7 @@ const GetInvolved = () => {
   const [isSubmittingPartner, setIsSubmittingPartner] = useState(false);
   const { toast } = useToast();
 
-  // ⬇️ PASTE YOUR GOOGLE APPS SCRIPT URL HERE
+
   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzFJHI2jhm0OW7Y6h_GEk9Mm55bKl_nYRV5XNhYJ_80RN0dwjfQosnxV_cGxCtsn3wUfw/exec";
 
   const handleVolunteerSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
